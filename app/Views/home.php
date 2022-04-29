@@ -69,6 +69,7 @@
   <script src="/assets/js/moment.js?v=2.0.2"></script>
   <script src="/assets/js/axios.js?v=2.0.2"></script>
   <script src="/assets/blockchain/web3.js?v=2.0.2"></script>
+  <script src="/assets/blockchain/provider.js?v=2.0.2"></script>
   <script src="/assets/blockchain/blockchain.js?v=2.0.2"></script>
   <script src="/assets/blockchain/token.js?v=2.0.2"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
