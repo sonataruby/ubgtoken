@@ -1,7 +1,7 @@
 <?php
-$lang = [];
-$lang["title"] = "UBG Token";
-$lang["start_date"] = "Ngày bắt đầu";
-$lang["buynow"] = "Mua ngay";
-$lang["younft"] = "Khoa";
-return $lang;
+return[
+	"title" => "UBG Token",
+	"start_date" => "Ngày bắt đầu",
+	"buynow" => "Mua ngay",
+	"younft" => "NFT của bạn",
+];

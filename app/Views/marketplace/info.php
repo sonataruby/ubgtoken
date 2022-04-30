@@ -1,17 +1,29 @@
 <?= $this->extend("App\Views\home") ?>
 <?= $this->section('main') ?>
   <?= $this->section('javascript') ?>
- 
-  <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-      var options = {
-        damping: '0.5'
-      }
-      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-  </script>
-    <?= $this->endSection() ?>
+      <script src="/assets/js/marketplace.js?v=2.0.2"></script>
+      <script type="text/javascript">
+          $('#staticBackdrop').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var id = button.data('id') // Extract info from data-* attributes
+            var name = button.data('name') // Extract info from data-* attributes
+            var star = button.data('star') // Extract info from data-* attributes
+            var price = button.data('price') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            modal.find('.modal-body h1').text('Item NFT  ' + name + " "+star+" star")
+            modal.find('.modal-footer button.marketplacebuyconfirm').attr("data-id",id);
+          });
+
+          $(".marketplacebuyconfirm").on("click", function(){
+              var id = $(this).attr("data-id");
+              var plance = Number($('.modal-body option:selected').val());
+              console.log(plance, "ID : ", id);
+              if(plance >= 365) SmartApp.Marketplace.buyTickets(id,plance);
+          });
+      </script>
+  <?= $this->endSection() ?>
 <div class="container-fluid py-4">
       <div class="row">
         <div class="col-xl-7">
@@ -54,7 +66,7 @@
             </div>
             <div class="card-body p-3 mt-2">
               <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade show position-relative active height-400 border-radius-lg" id="cam1" role="tabpanel" aria-labelledby="cam1" style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/smart-home-1.jpg'); background-size:cover;">
+                <div class="tab-pane fade show position-relative active height-400 border-radius-lg" id="cam1" role="tabpanel" aria-labelledby="cam1" style="background-image: url('<?php echo $item->banner;?>'); background-size:cover;">
                   <div class="position-absolute d-flex top-0 w-100">
                     <p class="text-white p-3 mb-0">17.05.2021 4:34PM</p>
                     <div class="ms-auto p-3">
@@ -98,13 +110,17 @@
                       <div class="numbers">
                         <p class="text-sm mb-0 text-capitalize font-weight-bold opacity-7">Total Markets</p>
                         <h5 class="font-weight-bolder mb-0">
-                          UBG Token : 222.000.000$ Market
+                          <?php echo $item->name;?>
                         </h5>
+                        <?php for ($i=1; $i <= $item->star; $i++) { ?>
+                        <span class="fa fa-star text-danger"></span>
+                      <?php } ?>
                       </div>
                     </div>
                     <div class="col-4 text-end">
-                      <img class="w-50" src="../../assets/img/small-logos/icon-sun-cloud.png" alt="image sun">
-                      <h5 class="mb-0 text-end me-1">Cloudy</h5>
+                      
+                      <h5 class="mb-0 text-end me-1"><?php echo number_format($item->price);?></h5>
+                      <h3>UBG</h3>
                     </div>
                   </div>
                 </div>
@@ -112,22 +128,77 @@
             </div>
           </div>
           <div class="row mt-4">
-            <?php foreach ($marketplance as $key => $value) { ?>
+            
               
             <div class="col-md-6 mb-3">
               <div class="card">
                 <div class="card-body text-center">
-                  <h1 class="text-gradient text-primary"><span id="status1" countto="21">21</span> <span class="text-lg ms-n2">°C</span></h1>
+                  <h1 class="text-gradient text-primary"><span id="status1" countto="21">Night</span> <span class="text-lg ms-n2">°C</span></h1>
                   <h6 class="mb-0 font-weight-bolder">Living Room</h6>
                   <p class="opacity-8 mb-0 text-sm">Temperature</p>
                 </div>
               </div>
             </div>
-            <?php } ?>
             
+            <div class="col-md-6 mb-3">
+              <div class="card">
+                <div class="card-body text-center">
+                  <h1 class="text-gradient text-primary"><span id="status1" countto="21">Bed</span> <span class="text-lg ms-n2">°C</span></h1>
+                  <h6 class="mb-0 font-weight-bolder">Living Room</h6>
+                  <p class="opacity-8 mb-0 text-sm">Temperature</p>
+                </div>
+              </div>
+            </div>
+            
+
+            <div class="col-md-6 mb-3">
+              <div class="card">
+                <div class="card-body text-center">
+                  <h1 class="text-gradient text-primary"><span id="status1" countto="21">Round</span> <span class="text-lg ms-n2">°C</span></h1>
+                  <h6 class="mb-0 font-weight-bolder">Living Room</h6>
+                  <p class="opacity-8 mb-0 text-sm">Temperature</p>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+              <div class="card">
+                <div class="card-body text-center">
+                  <br><br>
+                  <button class="btn btn-primary btn-lg marketplacebuynow" data-toggle="modal" data-target="#staticBackdrop" data-id="<?php echo $item->item_id; ?>" data-star="<?php echo $item->star; ?>" data-name="<?php echo $item->name; ?>" data-price="<?php echo $item->price; ?>"><?php echo lang("blockchian.buynow");?></button>
+                 
+                </div>
+              </div>
+            </div>
+
           </div>
+
+          
           
         </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-7">
+          <div class="card mt-4">
+            <div class="card-header"><h4><?php echo lang("blockchian.infomation");?></h4><hr></div>
+            <div class="card-body">
+              
+              <?php echo nl2br($item->description);?>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="card mt-4">
+              <div class="card-header"><h4><?php echo lang("blockchian.notes");?></h4><hr></div>
+                <div class="card-body">
+                  
+                  
+                </div>
+            </div>
+          </div>
       </div>
 
       <div class="card mt-4">
@@ -232,5 +303,29 @@
         </div>
       </div>
       <hr class="horizontal dark my-5">
-      
+      <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Buy NFT</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <h1></h1>
+            Select Day
+            <select  class="form-control" name="chuky">
+                <?php for($i=1; $i <= 5; $i++) { ?>
+              <option value="<?php echo $i*365; ?>"><?php echo $i*365; ?> Day - (<?php echo $i; ?> Year)</option>
+          <?php } ?>
+            </select>
+      </div> 
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary marketplacebuyconfirm">Confirm</button>
+      </div> 
+    </div>
+  </div>
+</div>
      <?= $this->endSection() ?>

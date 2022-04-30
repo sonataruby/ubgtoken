@@ -21,6 +21,6 @@ class Home extends BaseController
                 $nftmarket[] = $value;
             }
         }
-        return view('pages/home',["nftmarket" => $nftmarket, "marketplance" => $marketplance]);
+        return view('pages/home',["header" => $this->getHeader(),"nftmarket" => $nftmarket, "marketplance" => $marketplance]);
     }
 }

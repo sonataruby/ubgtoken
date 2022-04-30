@@ -27,7 +27,7 @@ class AdminController extends Controller
      * @var CLIRequest|IncomingRequest
      */
     protected $request;
-
+    protected $db;
     /**
      * An array of helpers to be loaded automatically upon
      * class instantiation. These helpers will be available
@@ -46,6 +46,7 @@ class AdminController extends Controller
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
         // Do Not Edit This Line
+        $this->db = db_connect();
         parent::initController($request, $response, $logger);
 
         // Preload any models, libraries, etc, here.

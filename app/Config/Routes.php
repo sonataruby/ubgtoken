@@ -36,7 +36,7 @@ $routes->resource('api', ['controller' => 'Api', 'only' => ['index', 'show', 'cr
 $routes->get('admin/users', 'UserController::index', ['filter' => 'permission:manage-user']);
 $routes->get('admin/users', 'UserController::index', ['filter' => 'role:admin,superadmin']);
 $routes->get('market/(:any)-(:num).html', 'Market::info/$2');
-$routes->get('marketplance/(:any)-(:num).html', 'Marketplance::info/$2');
+$routes->get('marketplace/(:any)-(:num).html', 'Marketplace::info/$2');
 //$routes->get('/assets/(:any)','Views/assets/$1');
 /*
  * --------------------------------------------------------------------
