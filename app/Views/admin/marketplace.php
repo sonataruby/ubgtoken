@@ -74,7 +74,9 @@
                                 
                                 <td>
                                     <a class="btn btn-sm btn-primary" href="<?php echo admin_url("marketplace/manager/".$value->id);?>">Edit</a>
+                                    <a class="btn btn-sm btn-primary" href="<?php echo admin_url("marketplace/manager/".$value->id);?>">Sync</a>
                                     <a class="btn btn-sm btn-primary" href="<?php echo admin_url("marketplace/delete/".$value->id);?>">Delete</a>
+
                                 </td>
                             </tr>
                         <?php } ?>
