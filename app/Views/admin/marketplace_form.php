@@ -14,7 +14,8 @@
   </script>
 <?= $this->endSection() ?>
 
-<form action="<?php echo admin_url("posts/createdata/".$data->id);?>" method="post">
+<form  action="<?php echo admin_url("marketplace/save/".$data->id);?>" method="post" enctype="multipart/form-data">
+<input type="hidden" name="form[item_id]" value="<?php echo $data->item_id;?>">
 <div class="card">
     <div class="card-header pb-0 border-bottom">
               <div class="d-lg-flex">
@@ -60,13 +61,10 @@
 
                 <div class="mb-3 row">
 
-                    <div class="col-sm-12 col-form-label">
-                        <div class="border" style="min-height:180px;"></div>
-                    </div>
-                    <div class="col-sm-12">
-                      <input name="form[site_image]" type="file" class="form-control">
-                    </div>
+                    <?php echo components("upload_image",["id" => "Banner","name" => "banner", "image" => $data->banner]);?>
                 </div>
+
+                
 
                 <div class="mb-3 row">
                     <div class="col-sm-12 col-form-label">Price</div>
