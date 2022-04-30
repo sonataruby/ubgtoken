@@ -6,8 +6,8 @@ class Marketplace extends BaseController
 	
     public function index()
     {
-        
-		return view('marketplace/home');
+        $item = $this->db->query("select * from marketplance")->getResult();
+		return view('marketplace/home',["data" => $item]);
 	}
 
 	public function info($id)

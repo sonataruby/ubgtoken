@@ -7,7 +7,7 @@ class Home extends BaseController
     public function index()
     {
 
-        $result = $this->db->query("select * from ads_items")->getResult();
+        $result = $this->db->query("select * from ads_items WHERE item_id > 0")->getResult();
          
         $nftmarket = [];
         $marketplance = [];

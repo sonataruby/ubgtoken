@@ -32,8 +32,8 @@ if (! function_exists('userinfo'))
 
 if (! function_exists('_go'))
 {
-	function _go($file){
-		return redirect()->to($file)->with('message', 'Update data ok');
+	function _go($file, $msg="Update data ok"){
+		return redirect()->to($file)->with('message', $msg);
 	}
 }
 
