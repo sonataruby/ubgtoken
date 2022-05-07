@@ -109,7 +109,7 @@
   <script src="/assets/blockchain/blockchain.js?v=2.0.2"></script>
   <script src="/assets/blockchain/token.js?v=2.0.2"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="./assets/js/dashboard.js?v=2.0.2"></script>
+  <script src="/assets/js/dashboard.js?v=2.0.2"></script>
 <?= $this->renderSection('javascript') ?>
   
 </body>

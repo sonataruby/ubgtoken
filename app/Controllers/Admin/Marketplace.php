@@ -38,9 +38,16 @@ class Marketplace extends AdminController
         	return ["name" => $old_file];
         }
 
-      
-           
+    }
 
+
+    public function ajaxsync($id){
+    	$data = $this->db->query("select * FROM marketplance where id='".$id."'")->getRow();
+    	echo json_encode($data);
+    }
+
+    public function syncupdate($itemid){
+    	$this->db->query("update marketplance SET sync='1' where item_id='".$itemid."'");
     }
 }
 

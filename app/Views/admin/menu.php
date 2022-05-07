@@ -57,14 +57,14 @@
           <div class="collapse" id="BookingManagerMenu">
             <ul class="nav ms-4">
               <li class="nav-item">
-                <a class="nav-link " href="<?php echo admin_url("marketplace");?>">
+                <a class="nav-link " href="<?php echo admin_url("hotel");?>">
                   
                   <span class="nav-link-text ms-1">Hotel</span>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link " href="<?php echo admin_url("market");?>">
+                <a class="nav-link " href="<?php echo admin_url("booking");?>">
                   
                   <span class="nav-link-text ms-1">Booking</span>
                 </a>

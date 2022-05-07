@@ -60,7 +60,7 @@ SmartApp = (function (SmartApp, $, window) {
 				SmartApp.Blockchain.Wallet = SmartApp.Blockchain.web3os.utils.toChecksumAddress(accounts[0]);
 
 				window.isConnect = true;
-				if($("#btn-connect").length > 0) $("#btn-connect").parent().html('<a class="btn btn-md btn-round btn-outline btn-auto btn-primary btn-with-icon walletLimit" id="btn-disconnect"><span id="walletAddress">'+SmartApp.Blockchain.Wallet+'</span> <em class="icon  ti ti-lock"></em></a>');
+				if($("#btn-connect").length > 0) $("#btn-connect").parent().html('<a class="btn btn-md btn-round btn-outline btn-auto btn-primary btn-with-icon walletLimit" id="btn-disconnect"><span id="walletAddress" class="balance">0.00 UBG</span> <em class="icon  ti ti-lock"></em></a>');
 				if($("#btn-disconnect").length > 0){
 					document.querySelector("#btn-disconnect").addEventListener("click", async function(){
 						await SmartApp.Blockchain.disconnect();
