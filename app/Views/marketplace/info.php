@@ -122,8 +122,8 @@
               <div class="card">
                 <div class="card-body text-center">
                   <h1 class="text-gradient text-primary"><span id="status1" countto="21">Night</span> <span class="text-lg ms-n2">°C</span></h1>
-                  <h6 class="mb-0 font-weight-bolder">Living Room</h6>
-                  <p class="opacity-8 mb-0 text-sm">Temperature</p>
+                  <h6 class="mb-0 font-weight-bolder"><?php echo number_format($item->night);?></h6>
+                  
                 </div>
               </div>
             </div>
@@ -132,8 +132,8 @@
               <div class="card">
                 <div class="card-body text-center">
                   <h1 class="text-gradient text-primary"><span id="status1" countto="21">Bed</span> <span class="text-lg ms-n2">°C</span></h1>
-                  <h6 class="mb-0 font-weight-bolder">Living Room</h6>
-                  <p class="opacity-8 mb-0 text-sm">Temperature</p>
+                  <h6 class="mb-0 font-weight-bolder"><?php echo number_format($item->bed);?></h6>
+                 
                 </div>
               </div>
             </div>
@@ -143,8 +143,8 @@
               <div class="card">
                 <div class="card-body text-center">
                   <h1 class="text-gradient text-primary"><span id="status1" countto="21">Round</span> <span class="text-lg ms-n2">°C</span></h1>
-                  <h6 class="mb-0 font-weight-bolder">Living Room</h6>
-                  <p class="opacity-8 mb-0 text-sm">Temperature</p>
+                  <h6 class="mb-0 font-weight-bolder"><?php echo number_format($item->chuky);?></h6>
+                 
                 </div>
               </div>
             </div>
