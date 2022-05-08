@@ -35,35 +35,22 @@
                 <ul class="nav nav-pills nav-fill p-1" role="tablist">
                   <li class="nav-item">
                     <a class="nav-link mb-0 px-0 py-1 active" data-bs-toggle="tab" href="#cam1" role="tab" aria-controls="cam1" aria-selected="true">
-                      Lounge
+                      Gallery
                     </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#cam2" role="tab" aria-controls="cam2" aria-selected="false">
-                      Office
+                      Video
                     </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#cam3" role="tab" aria-controls="cam3" aria-selected="false">
-                      Attic
+                      Notes
                     </a>
                   </li>
                 </ul>
               </div>
-              <div class="dropdown pt-2">
-                <a href="javascript:;" class="text-secondary ps-4" id="dropdownCam" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="fas fa-ellipsis-v"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end me-sm-n4 px-2 py-3" aria-labelledby="dropdownCam">
-                  <li><a class="dropdown-item border-radius-md" href="javascript:;">Pause</a></li>
-                  <li><a class="dropdown-item border-radius-md" href="javascript:;">Stop</a></li>
-                  <li><a class="dropdown-item border-radius-md" href="javascript:;">Schedule</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a class="dropdown-item border-radius-md text-danger" href="javascript:;">Remove</a></li>
-                </ul>
-              </div>
+              
             </div>
             <div class="card-body p-3 mt-2">
               <div class="tab-content" id="v-pills-tabContent">
