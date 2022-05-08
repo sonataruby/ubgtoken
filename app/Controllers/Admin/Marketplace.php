@@ -18,22 +18,20 @@ class Marketplace extends AdminController
 	public function save($id){
 		$data = $this->request->getPost("form");
 		$img = $this->uploadImage("banner_file",$data["banner"]);
-		$$data["banner"] = $img["name"];
+		$data["banner"] = $img["name"];
 		$this->db->query("update marketplance SET item_id='".$data["item_id"]."', banner='".$data["banner"]."', name='".$data["name"]."', price='".$data["price"]."', qty='".$data["qty"]."', description='".$data["description"]."', star='".$data["star"]."', night='".$data["night"]."', bed='".$data["bed"]."', chuky='".$data["chuky"]."', exitmoiky='".$data["exitmoiky"]."', prikeys='".$data["prikeys"]."' WHERE id='".$id."'");
 		return _go("admin/marketplace");
 	}
 
 	public function uploadImage($name,$old_file="") { 
         
-		
-
         $img = $this->request->getFile($name);
         if ($img->isValid() && ! $img->hasMoved()) {
         	if($old_file != "") @unlink(FCPATH . $old_file);
             $newName = $img->getRandomName();
             $img->move(FCPATH . 'uploads', $newName);
             $ext = $img->getClientExtension();
-            return ["name" => '/uploads/'.$newName,"ext" => $ext];
+            return ["name" => '/uploads/'.$newName];
         }else{
         	return ["name" => $old_file];
         }
