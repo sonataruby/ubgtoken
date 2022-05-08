@@ -3,9 +3,37 @@
   <?= $this->section('javascript') ?>
     
     <script src="/assets/js/nfttravel.js?v=2.0.2"></script>
+    <script type="text/html" id="itemMyNFT">
+      <div class="col-lg-4 col-md-10 mb-4 item">
+          <div class="card card-lg-y animated pd-0" data-animate="fadeInUp" data-delay="1.4">
+              <img class="card-img-top" {banner} style="max-height: 180px;">
+              <div class="card-body">
+                  <h4 class="title title-md title-dark mb-4">{name}</h4>
+                  <ul>
+                      <li class="d-flex justify-content-between"><div>Start : {star} </div><div> Bed : {bed}</div></li>
+                      <li class="d-flex justify-content-between"><div>Night : {night}</div></li>
+                      
+                      <li class="d-flex justify-content-between"><div>Round : {songaymua}</div><div>Next Exit : {songayhetky}</div></li>
+                      <li><hr></li>
+                      <li class="d-flex justify-content-between"><div>Create : {opentime}</div></li>
+                      <li class="d-flex justify-content-between"><div>Next Exit : {exittime}</div></li>
+                      <li>Update : {lastupdate}</li>
+                  </ul>
+                  <hr>
+                  <div>
+                      
+                      <a class="btn btn-sm btn-info" href="/mynft/sell-{item_id}.html">Sell Now</a>
+                      <a class="btn btn-sm btn-primary" href="/mynft/booking-{item_id}.html">Booking</a>
+                  </div>
+              </div>
+
+          </div>
+      </div><!-- .col -->
+    </script>
     <script type="text/javascript">
       $(document).ready(async () => {
-          var item = $(".item:first").html();
+          var item = $("#itemMyNFT").html();
+          
           $("body").append('<div id="notifyWait"><div class="preloader"><span class="spinner spinner-round"></span></div></div>');
           await SmartApp.Travel.getMyNFT(item,'col-lg-4 col-md-10 mb-4 item','myNFT').then(()=>{
               $("body #notifyWait").remove();
@@ -110,8 +138,8 @@
                     </div>
                     <div class="col-4 text-end">
                       
-                      <h5 class="mb-0 text-end me-1">Balance : <?php echo number_format($item->price);?></h5>
-                      <h3>UBG</h3>
+                      <h5 class="mb-0 text-end me-1">Balance : <span class="balance"><?php echo number_format($item->price);?></span></h5>
+                      
                     </div>
                   </div>
                 </div>
@@ -124,9 +152,9 @@
             <div class="col-md-6 mb-3">
               <div class="card">
                 <div class="card-body text-center">
-                  <h1 class="text-gradient text-primary"><span id="status1" countto="21">UBG NFT</span> <span class="text-lg ms-n2">°C</span></h1>
-                  <h6 class="mb-0 font-weight-bolder">Living Room</h6>
-                  <p class="opacity-8 mb-0 text-sm">Temperature</p>
+                  <h1 class="text-gradient text-primary"><span id="status1" countto="21">UBG NFT</span></h1>
+                  <h6 class="mb-0 font-weight-bolder">0</h6>
+                  
                 </div>
               </div>
             </div>
@@ -134,9 +162,9 @@
             <div class="col-md-6 mb-3">
               <div class="card">
                 <div class="card-body text-center">
-                  <h1 class="text-gradient text-primary"><span id="status1" countto="21">Sell</span> <span class="text-lg ms-n2">°C</span></h1>
-                  <h6 class="mb-0 font-weight-bolder">Living Room</h6>
-                  <p class="opacity-8 mb-0 text-sm">Temperature</p>
+                  <h1 class="text-gradient text-primary"><span id="status1" countto="21">Sell</span></h1>
+                  <h6 class="mb-0 font-weight-bolder">0</h6>
+                 
                 </div>
               </div>
             </div>
@@ -145,9 +173,9 @@
             <div class="col-md-6 mb-3">
               <div class="card">
                 <div class="card-body text-center">
-                  <h1 class="text-gradient text-primary"><span id="status1" countto="21">Booking</span> <span class="text-lg ms-n2">°C</span></h1>
-                  <h6 class="mb-0 font-weight-bolder">Living Room</h6>
-                  <p class="opacity-8 mb-0 text-sm">Temperature</p>
+                  <h1 class="text-gradient text-primary"><span id="status1" countto="21">Booking</span></h1>
+                  <h6 class="mb-0 font-weight-bolder">0</h6>
+                  
                 </div>
               </div>
             </div>
@@ -175,35 +203,8 @@
 
       <div class="row justify-content-center" id="myNFT">
                              
-              <?php for ($i=1; $i < 2 ; $i++) { ?>
-               
-              <div class="col-lg-4 col-md-10 mb-4 item">
-                  <div class="card card-lg-y animated pd-0" data-animate="fadeInUp" data-delay="1.4">
-                      <img class="card-img-top" {banner} style="max-height: 180px;">
-                      <div class="card-body">
-                          <h4 class="title title-md title-dark mb-4">{name}</h4>
-                          <ul>
-                              <li class="d-flex justify-content-between"><div>Start : {star} </div><div> Bed : {bed}</div></li>
-                              <li class="d-flex justify-content-between"><div>Night : {night}</div></li>
-                              
-                              <li class="d-flex justify-content-between"><div>Round : {songaymua}</div><div>Next Exit : {songayhetky}</div></li>
-                              <li><hr></li>
-                              <li class="d-flex justify-content-between"><div>Create : {opentime}</div></li>
-                              <li class="d-flex justify-content-between"><div>Next Exit : {exittime}</div></li>
-                              <li>Update : {lastupdate}</li>
-                          </ul>
-                          <hr>
-                          <div>
-                              
-                              <a class="btn btn-sm btn-info" href="/mynft/sell-{item_id}.html">Sell Now</a>
-                              <a class="btn btn-sm btn-primary" href="/mynft/booking-{item_id}.html">Booking</a>
-                          </div>
-                      </div>
-
-                  </div>
-              </div><!-- .col -->
-               <?php } ?>
-          </div><!-- .row -->
+            
+      </div><!-- .row -->
       
      
 

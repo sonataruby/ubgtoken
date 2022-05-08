@@ -60,7 +60,7 @@ SmartApp = (function (SmartApp, $, window) {
         
         var htmlOutput = "";
         for (var i = 0; i < Items.length; i++) {
-            htmlOutput += '<div class="'+_class+'">'+Items[i]+'</div>';
+            htmlOutput += Items[i];
         }
         $("#"+_target).html(htmlOutput);
         return true;

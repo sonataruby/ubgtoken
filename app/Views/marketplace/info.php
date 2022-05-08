@@ -1,7 +1,8 @@
 <?= $this->extend("App\Views\home") ?>
 <?= $this->section('main') ?>
   <?= $this->section('javascript') ?>
-      <script src="/assets/js/marketplace.js?v=2.0.2"></script>
+      <script src="/assets/blockchain/marketplace.js?v=2.0.2"></script>
+
       <script type="text/javascript">
           $('#staticBackdrop').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Button that triggered the modal
@@ -166,7 +167,7 @@
               <div class="card">
                 <div class="card-body text-center">
                   <br><br>
-                  <button class="btn btn-primary btn-lg marketplacebuynow" data-toggle="modal" data-target="#staticBackdrop" data-id="<?php echo $item->item_id; ?>" data-star="<?php echo $item->star; ?>" data-name="<?php echo $item->name; ?>" data-price="<?php echo $item->price; ?>"><?php echo lang("blockchian.buynow");?></button>
+                  <button class="btn btn-primary btn-lg marketplacebuynow" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id="<?php echo $item->item_id; ?>" data-star="<?php echo $item->star; ?>" data-name="<?php echo $item->name; ?>" data-price="<?php echo $item->price; ?>"><?php echo lang("blockchian.buynow");?></button>
                  
                 </div>
               </div>
@@ -303,19 +304,17 @@
         </div>
       </div>
       <hr class="horizontal dark my-5">
-      <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Buy NFT</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        
       </div>
       <div class="modal-body">
-            <h1></h1>
+            
             Select Day
-            <select  class="form-control" name="chuky">
+            <select  class="form-select" name="chuky">
                 <?php for($i=1; $i <= 5; $i++) { ?>
               <option value="<?php echo $i*365; ?>"><?php echo $i*365; ?> Day - (<?php echo $i; ?> Year)</option>
           <?php } ?>

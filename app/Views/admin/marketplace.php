@@ -10,6 +10,15 @@
             await SmartApp.Marketplace.sync(data.data);
 
         });
+
+        $(".synccontent").on("click", async function(){
+            var id = $(this).attr("data-id");
+            var data = await axios.get('/admin/marketplace/ajaxsync/'+id);
+            await SmartApp.Marketplace.syncContent(data.data);
+
+        });
+
+        
         $(".seterc").on("click", async function(){
             var address = $(".tokenpayment").val();
             if(address == ""){
@@ -181,8 +190,10 @@
                                 <td><?php echo $value->chuky;?></td>
                                 
                                 <td>
-                                    <a class="btn btn-sm btn-primary" href="<?php echo admin_url("marketplace/manager/".$value->id);?>">Edit</a>
+                                    
                                     <button class="btn btn-sm btn-primary syncdata" data-id="<?php echo $value->id;?>">Sync</button>
+                                    <button class="btn btn-sm btn-primary synccontent" data-id="<?php echo $value->id;?>">Sync Content</button>
+                                    <a class="btn btn-sm btn-primary" href="<?php echo admin_url("marketplace/manager/".$value->id);?>">Edit</a>
                                     <a class="btn btn-sm btn-primary" href="<?php echo admin_url("marketplace/delete/".$value->id);?>">Delete</a>
 
                                 </td>
