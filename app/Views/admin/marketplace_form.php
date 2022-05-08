@@ -124,7 +124,7 @@
                 <div class="mb-3 row">
                     <div class="col-sm-12 col-form-label">Prikey</div>
                     <div class="col-sm-12">
-                      <input name="form[prikeys]" type="text" value="<?php echo $data->prikeys;?>" class="form-control">
+                      <input name="form[prikeys]" type="text" value="<?php echo ($data->prikeys == "" ? uniqid() : $data->prikeys);?>" class="form-control">
                     </div>
                 </div>
                 

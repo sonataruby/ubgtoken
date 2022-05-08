@@ -37,12 +37,13 @@ SmartApp = (function (SmartApp, $, window) {
 
     SmartApp.Marketplace.syncContent = async (obj) => {
         SmartApp.Blockchain.notifyWait("");
-        let data = MarketplaceContact.setMarketTourCode(obj.item_id, obj.name, obj.code).send({from : login_wallet}).then(async (data)=>{
+        console.log(obj);
+        let data = MarketplaceContact.setMarketTourCode(obj.item_id, obj.name, obj.prikeys).send({from : login_wallet}).then(async (data)=>{
            
             if(data.status == true){
 
                 var tx = {blockHash : data.blockHash, transactionHash : data.transactionHash, blockNumber : data.blockNumber,token : "59e78438-fe00-41f3-97b8-37b13073d1e3"};
-                await SmartApp.Blockchain.setReportUrl("/marketplace/syncupdate/"+obj.item_id,tx);
+                await SmartApp.Blockchain.setReportUrl("/admin/marketplace/syncupdate/"+obj.item_id,tx);
                 SmartApp.Blockchain.notify("Complete update");
                 
             }else{
