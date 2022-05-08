@@ -143,7 +143,7 @@
               <div class="card">
                 <div class="card-body text-center">
                   <h1 class="text-gradient text-primary"><span id="status1" countto="21">Round</span> <span class="text-lg ms-n2">°C</span></h1>
-                  <h6 class="mb-0 font-weight-bolder"><?php echo number_format($item->chuky);?></h6>
+                  <h6 class="mb-0 font-weight-bolder"><?php echo number_format($item->chuky);?> days</h6>
                  
                 </div>
               </div>
@@ -153,7 +153,7 @@
             <div class="col-md-6 mb-3">
               <div class="card">
                 <div class="card-body text-center">
-                  <br><br>
+                  <br>
                   <button class="btn btn-primary btn-lg marketplacebuynow" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id="<?php echo $item->item_id; ?>" data-star="<?php echo $item->star; ?>" data-name="<?php echo $item->name; ?>" data-price="<?php echo $item->price; ?>"><?php echo lang("blockchian.buynow");?></button>
                  
                 </div>
