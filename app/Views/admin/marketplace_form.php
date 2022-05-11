@@ -67,7 +67,7 @@
                 
 
                 <div class="mb-3 row">
-                    <div class="col-sm-12 col-form-label">Price</div>
+                    <div class="col-sm-12 col-form-label">Price / 1 Day</div>
                     <div class="col-sm-12">
                       <input name="form[price]" type="text" value="<?php echo $data->price;?>" class="form-control">
                     </div>

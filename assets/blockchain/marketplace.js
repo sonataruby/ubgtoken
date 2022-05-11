@@ -20,7 +20,7 @@ SmartApp = (function (SmartApp, $, window) {
     }
     SmartApp.Marketplace.sync = async (obj) => {
         SmartApp.Blockchain.notifyWait("");
-        let data = MarketplaceContact.setMarketTour(obj.item_id, parseFloat(obj.price/obj.chuky).toFixed(9), obj.star,obj.night, obj.bed,obj.chuky, obj.exitmoiky, obj.qty).send({from : login_wallet}).then(async (data)=>{
+        let data = MarketplaceContact.setMarketTour(obj.item_id, obj.price, obj.star,obj.night, obj.bed,obj.chuky, obj.exitmoiky, obj.qty).send({from : login_wallet}).then(async (data)=>{
            
             if(data.status == true){
 
