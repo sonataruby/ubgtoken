@@ -8,7 +8,6 @@ import "https://raw.githubusercontent.com/sonataruby/seascape-smartcontracts/mai
 /// @dev id of Seascape NFT quality.
 
 import "./NFTTravel.sol";
-import "./NFTEvents.sol";
 contract TravelFactory is AccessControl,  Ownable {
     using SafeMath for uint256;
     //using NftTypes for NftTypes;
@@ -17,7 +16,6 @@ contract TravelFactory is AccessControl,  Ownable {
     bytes32 public constant GENERATOR_ROLE = keccak256("GENERATOR");
     
     TravelNFT private nftTravel;
-    TravelEvents private nftEvent;
     IERC20 private _tokenCurentcy;
     struct MarketPlaceItem {
         string name;
@@ -31,7 +29,7 @@ contract TravelFactory is AccessControl,  Ownable {
         uint256 qty;
     }
     
-   
+    bool public eventTickets = false;
     uint256 _des = 10**9;
     
     mapping(uint256 => MarketPlaceItem)  public MarketPlaceItemOf;
@@ -59,7 +57,7 @@ contract TravelFactory is AccessControl,  Ownable {
         return result;
     }
     
-    function getPricePayment(uint256 _itemID, uint256 _songaymua) external returns(uint256){
+    function getPricePayment(uint256 _itemID, uint256 _songaymua) public view returns(uint256){
         uint256 _price = MarketPlaceItemOf[_itemID].price;
         uint256 payment = (_price * _des) * _songaymua;
         return payment;
@@ -85,10 +83,22 @@ contract TravelFactory is AccessControl,  Ownable {
         uint256 _tokenId = nftTravel.mintTickets(msg.sender, _star, _night, _bed, songaymua, _chuky, _exitmoiky);
         nftTravel.setMintOptios(_tokenId,_name,_code);
         setSellQty(_itemID,_qty);
-        nftEvent.runEvent(_tokenId,msg.sender);
+        if(eventTickets == true){
+             nftTravel.addEvents(_tokenId,msg.sender,"buyticket");
+        }
+       
         return _tokenId;
     }
     
+    function setEvents(uint256 _events) external onlyAdmin{
+        if(_events == 1){
+            eventTickets = true;
+        }else{
+            eventTickets = false;
+        }
+        
+    }
+
     function setSellQty(uint256 _itemID, uint256 _qty) private{
         MarketPlaceItemOf[_itemID].qty = (_qty - 1);
     }
@@ -96,8 +106,10 @@ contract TravelFactory is AccessControl,  Ownable {
         MarketPlaceItemOf[_itemID].qty = _qty;
     }
 
-    function setMarketTour(uint256 _itemID, uint256 _price, uint8 _star, uint256 _night, uint256 _bed, uint256 _chuky, uint256 _exitmoiky) external onlyAdmin{
-        MarketPlaceItemOf[_itemID] = MarketPlaceItem("No Name", _price, _star, _night, _bed, _exitmoiky,_chuky,"N/A",1000);
+    function setMarketTour(uint256 _itemID, uint256 _price, uint8 _star, uint256 _night, uint256 _bed, uint256 _chuky, uint256 _exitmoiky, uint256 _qty) external onlyAdmin{
+        string memory _name = MarketPlaceItemOf[_itemID].name;
+        string memory _code = MarketPlaceItemOf[_itemID].code;
+        MarketPlaceItemOf[_itemID] = MarketPlaceItem(_name, _price, _star, _night, _bed, _exitmoiky,_chuky,_code,_qty);
     }
     function setMarketTourCode(uint256 _itemID, string calldata _name,  string calldata _code) external onlyAdmin{
         MarketPlaceItemOf[_itemID].name = _name;

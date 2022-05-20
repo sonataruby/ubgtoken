@@ -67,6 +67,8 @@ SmartApp = (function (SmartApp, $, window) {
 
 					});
 				}
+				
+				
 			}
 			
 			if(SmartApp.Blockchain.Wallet == undefined) {

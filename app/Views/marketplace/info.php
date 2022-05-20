@@ -107,7 +107,7 @@
                     </div>
                     <div class="col-4 text-end">
                       
-                      <h5 class="mb-0 text-end me-1"><?php echo number_format($item->price);?></h5>
+                      <h5 class="mb-0 text-end me-1"><?php echo number_format($item->price * $item->chuky);?></h5>
                       <h3>UBG</h3>
                     </div>
                   </div>

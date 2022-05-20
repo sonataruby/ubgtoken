@@ -303,6 +303,19 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
+				"name": "_events",
+				"type": "uint256"
+			}
+		],
+		"name": "setEvents",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
 				"name": "_itemID",
 				"type": "uint256"
 			},
@@ -453,6 +466,19 @@
 				"internalType": "bytes32",
 				"name": "",
 				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "eventTickets",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
 			}
 		],
 		"stateMutability": "view",

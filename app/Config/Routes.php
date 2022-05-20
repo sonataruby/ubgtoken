@@ -37,6 +37,8 @@ $routes->get('admin/users', 'UserController::index', ['filter' => 'permission:ma
 $routes->get('admin/users', 'UserController::index', ['filter' => 'role:admin,superadmin']);
 $routes->get('market/(:any)-(:num).html', 'Market::info/$2');
 $routes->get('marketplace/(:any)-(:num).html', 'Marketplace::info/$2');
+$routes->get('mynft/booking-(:num).html', 'Mynft::booking/$1');
+$routes->get('mynft/sell-(:num).html', 'Mynft::sell/$1');
 //$routes->get('/assets/(:any)','Views/assets/$1');
 /*
  * --------------------------------------------------------------------

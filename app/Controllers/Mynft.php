@@ -19,4 +19,15 @@ class Mynft extends BaseController
         
 		return view('mynft/buy');
 	}
+
+	public function sell($token_id=0)
+    {
+        
+		return view('mynft/sell');
+	}
+	
+	public function booking($token_id=0){
+		return view('mynft/booking',["token_id" => $token_id]);
+	}
+
 }

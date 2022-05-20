@@ -46,7 +46,7 @@
             await SmartApp.Travel.setFatory(address);
         });
         
-
+        
         $(".withdraw").on("click", async function(){
             
             await SmartApp.Marketplace.withdrawBNB();
@@ -67,7 +67,7 @@
           Set NFT Travel
           <div class="row">
             <div class="col-md-8">
-              <input type="text" class="form-control nftaddress" placeholder="Enter NFT Travel Address" aria-label="Recipient's username" aria-describedby="button-addon2">
+              <input type="text" class="form-control nftaddress" placeholder="Enter NFT Travel Address" >
             </div>
             <div class="col-md-4">
               <button class="btn btn-outline-secondary setnft" type="button">Set NFT Travel</button>
@@ -80,7 +80,7 @@
           Set Token Payment
           <div class="row">
             <div class="col-md-8">
-              <input type="text" class="form-control tokenpayment" placeholder="Enter Token Address" aria-label="Recipient's username" aria-describedby="button-addon2">
+              <input type="text" class="form-control tokenpayment" placeholder="Enter Token Address" >
             </div>
             <div class="col-md-4">
               <button class="btn btn-outline-secondary seterc" type="button">Set Token</button>
@@ -95,7 +95,7 @@
           Set NFT Factory
           <div class="row">
             <div class="col-md-8">
-              <input type="text" class="form-control nftfatory" placeholder="Enter Fatory Address" aria-label="Recipient's username" aria-describedby="button-addon2">
+              <input type="text" class="form-control nftfatory" placeholder="Enter Fatory Address" >
             </div>
             <div class="col-md-4">
               <button class="btn btn-outline-secondary setfatory" type="button">Set Fatory</button>
