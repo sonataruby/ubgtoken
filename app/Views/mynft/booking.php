@@ -17,9 +17,9 @@
         });
         $("#province").on("change",function(){
             var id = $(this).val();
-            
-            
-            axios.get("/api/province/"+id).then(function (response) {
+            if(Number(id) < 1) return 0;
+           
+            axios.get("/mynft/province/"+id).then(function (response) {
                 var html ='<div class="card mb-4 border"><div class="alert alert-warning" id="notes">'+response.data.notes+'</div></div>';
                 html += '<div class="card mb-4"><h4 class="mb-4">Service</h4>';
                 html += '<div>'+response.data.service+'</div>';
@@ -38,7 +38,9 @@
     $("#booking").on("submit", function(){
         var obj = {
             tokenid : <?php echo $token_id ?>,
-            name : $("input[name=firstname]").val() + " "+$("input[name=lastname]").val(),
+            firstname : $("input[name=firstname]").val(),
+            lastname : $("input[name=lastname]").val(),
+            name : $("input[name=firstname]").val() + " "+ $("input[name=lastname]").val(),
             email : $("input[name=email]").val(),
             passport : $("input[name=passport]").val(),
             address : $("input[name=address]").val(),
@@ -48,7 +50,7 @@
             checkout : $("input[name=checkout]").val(),
         }
 
-        axios.post("/api/booking?id=<?php echo $token_id ?>",obj).then(function (response) {
+        axios.post("/mynft/bookingtoken?id=<?php echo $token_id ?>",obj).then(function (response) {
             obj.checkin = moment(obj.checkin + " 0:00").unix();
             obj.checkout = moment(obj.checkout + " 0:00").unix();
             console.log(obj);
@@ -137,11 +139,12 @@
                             </div>
                             <div class="col-md-8">
                                 <label for="exampleInputEmail1">Location</label>
-                                <select  class="form-control" id="province" name="province" required>
+                                <select  class="form-select" id="province" name="province" required>
                                     <option value="">----</option>
-                                    <% hotel.forEach((item,index) => {%>
-                                        <option value="<%=item.id%>"><%=item.province%> - <%=item.star%> Star</option>
-                                    <%});%>
+                                    <?php foreach ($hotel as $key => $value) { ?>
+                                        <option value="<?php echo $value->id; ?>"><?php echo $value->province; ?> - <?php echo $value->star; ?> Star</option>
+                                    <?php } ?>
+                                        
                                 </select>
                             </div>
                             
