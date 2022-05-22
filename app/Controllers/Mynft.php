@@ -38,9 +38,12 @@ class Mynft extends BaseController
 		exit();
 	}
 
+
 	public function bookingtoken(){
+
 		$token_id = $this->request->getGet("id");
 		$tokenid = $this->request->getPost("tokenid");
+
 		$name = $this->request->getPost("name");
 		$firstname = $this->request->getPost("firstname");
 		$lastname = $this->request->getPost("lastname");
@@ -52,7 +55,9 @@ class Mynft extends BaseController
 		$hotel = $this->request->getPost("hotel");
 		$checkin = $this->request->getPost("checkin");
 		$checkout = $this->request->getPost("checkout");
+
 		$this->db->query("insert into booking set tokenid='".$tokenid."', firstname='".$firstname."', lastname='".$lastname."', phonenumber='".$phone."', email='".$email."', passport='".$passport."', address='".$address."', hotel_country='vn', hotel_localtion='".$hotel."', hotel_checkin='".$checkin."', hotel_checkout='".$checkout."', status='News'");
+		
 		$arv = [
 			"checkin" => strtotime($checkin),
 			"checkout" => strtotime($checkout)

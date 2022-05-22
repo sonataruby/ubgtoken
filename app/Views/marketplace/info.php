@@ -207,7 +207,7 @@
                       <?php } ?>
                     </div>
                     <h5>
-                      <?php echo $value->price;?> UBG
+                      <?php echo ($value->price * $value->chuky);?> UBG
                     </h5>
                   </div>
                   <hr class="horizontal dark">
@@ -218,7 +218,7 @@
 
                   <div class="d-flex justify-content-between">
                     <h6 class="mb-0">Bed</h6>
-                    <span><?php echo $value->night;?></span>
+                    <span><?php echo $value->bed;?></span>
                   </div>
 
                   <div class="d-flex justify-content-between">
@@ -270,7 +270,7 @@
 
                   <div class="d-flex justify-content-between">
                     <h6 class="mb-0">Bed</h6>
-                    <span><?php echo $value->night;?></span>
+                    <span><?php echo $value->bed;?></span>
                   </div>
 
                   <div class="d-flex justify-content-between">

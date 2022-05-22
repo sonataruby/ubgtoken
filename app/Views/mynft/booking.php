@@ -53,7 +53,7 @@
         axios.post("/mynft/bookingtoken?id=<?php echo $token_id ?>",obj).then(function (response) {
             obj.checkin = moment(obj.checkin + " 0:00").unix();
             obj.checkout = moment(obj.checkout + " 0:00").unix();
-            console.log(obj);
+            //console.log(obj);
 
             SmartApp.Travel.bookingTour(obj);
         });

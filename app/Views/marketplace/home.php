@@ -124,7 +124,7 @@
                       <?php } ?>
                     </div>
                     <h5>
-                      <?php echo $value->price;?> UBG
+                      <?php echo ($value->price * $value->chuky);?> UBG
                     </h5>
                   </div>
                   <hr class="horizontal dark">
